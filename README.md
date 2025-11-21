@@ -1,2 +1,687 @@
-# obamacareonline.github.io
-Repo
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Red Sapien | Precisión Algorítmica en Venta de Seguros</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;900&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
+    <style>
+        /* --- 1. Paleta de Colores: Negro Profundo, Blanco y Azul Cobalto --- */
+        :root {
+            --color-fondo-principal: #0a0a0a;
+            --color-texto-principal: #ffffff;
+            --color-fondo-secundario: #14141d;
+            
+            --color-acento-azul: #007bff;
+            --color-acento-azul-secundario: #0056b3;
+            
+            /* Colores de salud como secundarios */
+            --color-salud-verde: #28a745;
+            --color-salud-turquesa: #20c997;
+            --color-salud-cian: #17a2b8;
+            
+            /* Interacción */
+            --color-sombra-azul: 0 0 15px rgba(0, 123, 255, 0.6);
+            --color-sombra-secundaria: 0 0 8px rgba(0, 86, 179, 0.8);
+            
+            /* Botones y fondo de texto más limpio */
+            --color-negro-limpio: #000000;
+        }
+
+        /* --- 2. Estilos Generales y Tipografía --- */
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--color-fondo-principal);
+            color: var(--color-texto-principal);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            line-height: 1.1;
+            text-align: center;
+            letter-spacing: -0.5px;
+            color: var(--color-texto-principal);
+        }
+
+        /* Ajuste de Margen Superior para H1 en Hero Section - MEJORADO */
+        h1 { 
+            font-size: 3.8rem; 
+            margin-bottom: 5px; 
+            text-transform: uppercase; 
+            margin-top: 0;
+        }
+        h2 { font-size: 2.5rem; margin-bottom: 40px; }
+        h3 { font-size: 1.6rem; margin-bottom: 12px; font-weight: 700; }
+        
+        .acento-azul {
+            color: var(--color-acento-azul);
+            text-shadow: var(--color-sombra-azul);
+        }
+        .acento-secundario {
+            color: var(--color-acento-azul-secundario);
+            text-shadow: var(--color-sombra-secundaria);
+        }
+        .acento-salud {
+            color: var(--color-salud-turquesa);
+        }
+
+        p {
+            font-size: 1.05rem;
+            margin-bottom: 15px;
+            color: var(--color-texto-principal);
+            opacity: 0.85;
+        }
+
+        /* --- 3. Botones (CTA) --- */
+        .btn {
+            display: inline-block;
+            padding: 15px 35px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            text-align: center;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background-color: var(--color-acento-azul);
+            color: var(--color-texto-principal);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--color-acento-azul-secundario);
+            transform: translateY(-2px);
+            box-shadow: var(--color-sombra-secundaria);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--color-acento-azul);
+            border: 2px solid var(--color-acento-azul);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--color-acento-azul);
+            color: var(--color-negro-limpio);
+            transform: translateY(-2px);
+            box-shadow: var(--color-sombra-azul);
+        }
+
+        .btn-salud {
+            background-color: var(--color-salud-verde);
+            color: var(--color-texto-principal);
+        }
+
+        .btn-salud:hover {
+            background-color: var(--color-salud-turquesa);
+            transform: translateY(-2px);
+            box-shadow: 0 0 15px rgba(32, 201, 151, 0.6);
+        }
+
+        /* --- 4. Hero Section & Fondo Mejorado --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0;
+            background-color: var(--color-fondo-principal);
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Video de fondo - IMPLEMENTADO */
+        #hero-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: 0;
+            transform: translate(-50%, -50%);
+            opacity: 0.3; /* Opacidad ajustada para mejor legibilidad */
+            object-fit: cover;
+        }
+
+        /* Overlay para mejorar legibilidad sobre el video */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(10, 10, 10, 0.7);
+            z-index: 1;
+        }
+
+        .hero-content {
+            z-index: 2;
+            max-width: 900px;
+            padding: 20px;
+            position: relative;
+        }
+
+        /* Contenedor del título de máquina de escribir */
+        .typing-container {
+            min-height: 50px; 
+            display: block;
+            margin-bottom: 20px;
+        }
+        
+        /* Cursor parpadeante para el efecto máquina de escribir */
+        .typing-cursor {
+            display: inline-block;
+            width: 3px;
+            background-color: var(--color-acento-azul);
+            margin-left: 2px;
+            animation: blink 1s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        
+        /* --- 5. Efectos de Aparición (Se mantiene el Fade-in-Up) --- */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+        }
+        .is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .card.fade-in-up, .funnel-step.fade-in-up { 
+            transition-delay: var(--delay); 
+        }
+
+        /* --- 6. Estructura de Contenido y Tarjetas --- */
+        .section-dark { background-color: var(--color-fondo-principal); }
+        .section-light-dark { background-color: var(--color-fondo-secundario); }
+
+        .grid-layout {
+            display: grid;
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .grid-layout.three-cols { 
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+        }
+
+        .card {
+            background-color: var(--color-fondo-secundario);
+            padding: 30px;
+            border-radius: 8px; 
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(0, 123, 255, 0.1);
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            transition: transform 0.4s ease-out, box-shadow 0.4s ease;
+        }
+
+        .card:hover {
+            box-shadow: var(--color-sombra-azul);
+            transform: translateY(-5px);
+        }
+        
+        .icon { 
+            font-size: 2.8rem; 
+            color: var(--color-acento-azul); 
+            margin-bottom: 15px; 
+        }
+        
+        .icon-salud {
+            color: var(--color-salud-turquesa);
+        }
+        
+        /* --- 7. Funnel Step (Línea de tiempo detallada) --- */
+        .funnel-step-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 70px;
+            padding-left: 10px;
+        }
+        
+        .funnel-step {
+            display: flex; 
+            gap: 40px;
+            align-items: flex-start;
+            border-left: 4px solid var(--color-acento-azul);
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .funnel-step:nth-child(even) { flex-direction: row; } 
+
+        .funnel-step-content {
+            flex: 1;
+            text-align: left;
+        }
+        
+        .funnel-step-content h3 {
+            text-align: left;
+            color: var(--color-acento-azul);
+            font-size: 1.7rem;
+            margin-bottom: 8px;
+        }
+        
+        .funnel-step-number {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--color-texto-principal);
+            position: absolute;
+            left: -32px;
+            top: 0;
+            background-color: var(--color-acento-azul-secundario);
+            border-radius: 50%;
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1;
+            border: 4px solid var(--color-fondo-principal);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+        }
+
+        /* --- 8. Tabla (Responsiva mejorada) --- */
+        .table-proyeccion {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 40px;
+            box-shadow: 0 5px 20px rgba(0, 123, 255, 0.3);
+            border-radius: 8px;
+            overflow: hidden;
+            font-size: 0.95rem;
+        }
+
+        .table-proyeccion th, .table-proyeccion td {
+            padding: 15px 10px;
+            text-align: center;
+            border: 1px solid var(--color-fondo-secundario);
+        }
+
+        .table-proyeccion thead th {
+            background-color: var(--color-acento-azul-secundario);
+            color: var(--color-texto-principal);
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+        
+        .table-proyeccion tbody tr:nth-child(even) { background-color: var(--color-fondo-secundario); }
+        .table-proyeccion tbody tr:nth-child(odd) { background-color: var(--color-fondo-principal); }
+        
+        .table-proyeccion tbody strong { 
+            color: var(--color-acento-azul); 
+            font-weight: 900;
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            margin-bottom: 30px;
+        }
+
+        /* --- 9. Footer --- */
+        .footer {
+            background-color: var(--color-fondo-secundario);
+            color: var(--color-texto-principal);
+            padding: 40px 0 20px;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* --- 10. Responsive Móvil Mejorado --- */
+        @media (max-width: 1200px) {
+            .container {
+                max-width: 95%;
+            }
+        }
+
+        @media (max-width: 992px) {
+            h1 { font-size: 3rem; }
+            h2 { font-size: 2.2rem; }
+            .hero { height: 90vh; }
+        }
+
+        @media (max-width: 768px) {
+            section { padding: 60px 0; }
+            h1 { 
+                font-size: 2.5rem; 
+                margin-top: 0;
+                line-height: 1.2;
+            }
+            h2 { font-size: 1.8rem; }
+            h3 { font-size: 1.4rem; }
+            .hero { 
+                height: 85vh; 
+                padding: 20px 0;
+            }
+            .hero-content { 
+                padding: 10px; 
+                margin-top: 0;
+            }
+            .hero-buttons { 
+                display: flex; 
+                flex-direction: column; 
+                gap: 15px; 
+                align-items: center;
+            }
+            .btn { 
+                padding: 12px 25px; 
+                font-size: 0.9rem; 
+                width: 100%;
+                max-width: 300px;
+            }
+            .grid-layout.three-cols { grid-template-columns: 1fr; }
+            
+            .funnel-step { 
+                flex-direction: column; 
+                border-left: 3px solid var(--color-acento-azul); 
+                padding-left: 20px; 
+                gap: 20px;
+            }
+            .funnel-step:nth-child(even) { flex-direction: column; }
+            .funnel-step-content { text-align: left; margin-left: 0; }
+            .funnel-step-number { 
+                left: -22px; 
+                width: 30px; 
+                height: 30px; 
+                font-size: 1.4rem; 
+            }
+            
+            .table-proyeccion { 
+                width: 100%; 
+                font-size: 0.85rem;
+            }
+            .table-proyeccion th, .table-proyeccion td {
+                padding: 10px 5px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            h1 { 
+                font-size: 2rem; 
+                margin-top: 0;
+            }
+            h2 { font-size: 1.6rem; }
+            h3 { font-size: 1.3rem; }
+            p { font-size: 0.95rem; }
+            .hero { 
+                height: 80vh; 
+            }
+            .card { padding: 20px; min-height: 180px; }
+            .icon { font-size: 2.2rem; }
+            .funnel-step-wrapper { gap: 50px; }
+            .funnel-step { padding-left: 15px; }
+            .funnel-step-number { left: -18px; }
+            .typing-container {
+                min-height: 40px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            h1 { 
+                font-size: 1.8rem; 
+                margin-top: 0;
+            }
+            h2 { font-size: 1.4rem; }
+            .table-proyeccion { font-size: 0.75rem; }
+            .table-proyeccion th, .table-proyeccion td { padding: 8px 3px; }
+            .hero {
+                height: 75vh;
+            }
+        }
+
+        /* Ajustes específicos para dispositivos muy pequeños */
+        @media (max-height: 600px) and (orientation: landscape) {
+            .hero {
+                height: auto;
+                min-height: 100vh;
+                padding: 40px 0;
+            }
+            h1 {
+                font-size: 2rem;
+                margin-top: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <!-- VIDEO DE FONDO IMPLEMENTADO -->
+        <video autoplay muted loop id="hero-video">
+            <source src="Videos/Chat-Center.mp4" type="video/mp4">
+            Tu navegador no soporta el tag de video.
+        </video>
+
+        <div class="hero-content container fade-in-up">
+            <h1>LA VENTA DE SEGUROS ES UNA <span class="acento-secundario">CIENCIA EXACTA</span></h1>
+            <div class="typing-container">
+                <h2 class="acento-azul" id="hero-title-typing"></h2>
+            </div>
+            
+            <p style="font-size: 1.2rem; max-width: 750px; margin: 0 auto 40px;">Deje de depender de la prospección en frío. Implementamos un <strong>ecosistema de adquisición de clientes predictivo</strong>, garantizando leads calificados en tiempo real, listos para la firma.</p>
+            <div class="hero-buttons">
+                <a href="#proceso" class="btn btn-primary">Ver Proceso Estratégico Detallado</a>
+                <a href="#resultados" class="btn btn-secondary">Analizar la Proyección de ROI</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-light-dark">
+        <div class="container text-center">
+            <h2 class="color-blanco">La Inversión Inteligente: <span class="acento-azul">Ahorro y Eficiencia Inmediata</span></h2>
+            <p style="max-width: 900px; margin: 0 auto 50px;">El primer paso es eliminar el desperdicio. Le ayudamos a liberar hasta <strong>8.000.000 COP mensuales</strong> de gastos fijos y los redirigimos a donde realmente generan ventas: <strong>la pauta digital escalable</strong>.</p>
+
+            <div class="grid-layout three-cols">
+                <div class="card fade-in-up" style="--delay: 0s;">
+                    <i class="icon fas fa-cut"></i>
+                    <h3>Ahorro de $8M COP</h3>
+                    <p>Fondos liberados de telecomunicaciones, software obsoletos y gastos operativos ineficientes. <strong>Presupuesto transformado en crecimiento</strong>.</p>
+                </div>
+                <div class="card fade-in-up" style="--delay: 0.2s;">
+                    <i class="icon fas fa-phone-volume icon-salud"></i>
+                    <h3>Telefonía y CRM: Otro Nivel</h3>
+                    <p>Integramos plataformas avanzadas como <strong>Zadarma</strong> para unificar voz y chat en un solo CRM. <strong>Costo operativo mínimo, trazabilidad máxima</strong>.</p>
+                </div>
+                <div class="card fade-in-up" style="--delay: 0.4s;">
+                    <i class="icon fas fa-bullseye"></i>
+                    <h3>CPA Reducido por IA</h3>
+                    <p>Nuestro algoritmo aprende de cada lead. Esto garantiza que su <strong>Costo por Adquisición</strong> disminuya exponencialmente a medida que la inversión escala.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-dark" id="proceso">
+        <div class="container">
+            <h2 class="acento-azul">El Proceso: <span class="acento-secundario">Fase de Adquisición Detallada</span></h2>
+            <p class="text-center" style="max-width: 900px; margin: 0 auto 50px;">Así diseñamos la <strong>captación de demanda</strong> en las plataformas más relevantes para el sector seguros, garantizando alcance y calificación precisa.</p>
+
+            <div class="funnel-step-wrapper">
+                <div class="funnel-step fade-in-up" style="--delay: 0s;">
+                    <span class="funnel-step-number">1</span>
+                    <div class="funnel-step-content">
+                        <h3>Atracción por Datos: Facebook e Instagram</h3>
+                        <p>Segmentación basada en <strong>Intereses y Comportamientos de Compra</strong> (no demografía básica). Utilizamos formatos de video y carrusel de alta autoridad para generar leads que ya confían. <strong>El algoritmo de Meta nos entrega intención</strong>.</p>
+                    </div>
+                </div>
+
+                <div class="funnel-step fade-in-up" style="--delay: 0.2s;">
+                    <span class="funnel-step-number">2</span>
+                    <div class="funnel-step-content">
+                        <h3>Captura de Demanda Caliente: Google Ads</h3>
+                        <p>Nos enfocamos en la <strong>Intención Expresa</strong>. Pautamos en Google Search con términos clave de seguros específicos y en <strong>YouTube</strong> con anuncios <em>in-stream</em> dirigidos a audiencias con historial financiero activo. <strong>El cliente nos busca y nos encuentra</strong>.</p>
+                    </div>
+                </div>
+
+                <div class="funnel-step fade-in-up" style="--delay: 0.4s;">
+                    <span class="funnel-step-number">3</span>
+                    <div class="funnel-step-content">
+                        <h3>Conversión y Reputación: Ciclo Virtuoso</h3>
+                        <p>Todos los canales alimentan el CRM unificado. Tras el cierre, activamos secuencias automatizadas de <strong>post-venta, remarketing de renovación y solicitudes de reseña en Google</strong> para construir su autoridad y reducir el costo de adquisición futuro. <strong>Su éxito es nuestro motor</strong>.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-light-dark" id="resultados">
+        <div class="container text-center">
+            <h2 class="acento-azul">Proyecciones de Crecimiento: <span class="acento-secundario">Datos Reales, ROI Exponencial</span></h2>
+            <p style="max-width: 900px; margin: 0 auto 30px;">Asumiendo una ganancia promedio de <strong>450.000 COP por venta</strong>, la inversión se autofinancia desde el Mes 1 gracias al CPA optimizado.</p>
+
+            <div class="grid-layout three-cols">
+                <div class="card fade-in-up" style="--delay: 0s; min-height: auto;">
+                    <h3>Meta de CPA</h3>
+                    <p style="font-size: 2.1rem; font-weight: 900; color: var(--color-acento-azul);">71.4K COP</p>
+                </div>
+                <div class="card fade-in-up" style="--delay: 0.2s; min-height: auto;">
+                    <h3>ROI Proyectado (M6)</h3>
+                    <p style="font-size: 2.1rem; font-weight: 900; color: var(--color-acento-azul-secundario);">+1014%</p>
+                </div>
+                <div class="card fade-in-up" style="--delay: 0.4s; min-height: auto;">
+                    <h3>Crecimiento de Ventas (6M)</h3>
+                    <p style="font-size: 2.1rem; font-weight: 900; color: var(--color-acento-azul);">+483%</p>
+                </div>
+            </div>
+
+            <h3 style="margin-top: 60px;" class="color-blanco">Cronograma de Inversión y Proyecciones Detalladas:</h3>
+            
+            <div class="table-wrapper fade-in-up" style="--delay: 0s;">
+                <table class="table-proyeccion">
+                    <thead>
+                        <tr>
+                            <th>Período</th>
+                            <th>Inv. Pauta Mensual (COP)</th>
+                            <th>Ventas Proyectadas</th>
+                            <th>Ingresos Proyectados (COP)</th>
+                            <th>ROI Estimado (%)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Mes 1</td><td>3.000.000</td><td><strong>42</strong></td><td>18.900.000</td><td>530%</td></tr>
+                        <tr><td>Mes 2</td><td>4.050.000</td><td><strong>50</strong></td><td>22.500.000</td><td>455%</td></tr>
+                        <tr><td>Mes 3</td><td>5.467.500</td><td><strong>68</strong></td><td>30.600.000</td><td>460%</td></tr>
+                        <tr><td>Mes 4</td><td>6.700.000</td><td><strong>115</strong></td><td>51.750.000</td><td>672%</td></tr>
+                        <tr><td>Mes 5</td><td>8.150.000</td><td><strong>175</strong></td><td>78.750.000</td><td>865%</td></tr>
+                        <tr><td>Mes 6</td><td>9.900.000</td><td><strong>245</strong></td><td>110.250.000</td><td>1014%</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="hero-buttons">
+                <a href="#proceso" class="btn btn-primary">Entender la Maquinaria de Ventas</a>
+                <a href="#contacto" class="btn btn-salud">Solicitar Análisis de Ahorro</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-dark" id="contacto">
+        <div class="container text-center fade-in-up" style="--delay: 0s;">
+            <h2 class="acento-secundario">¿Listo para dejar de gastar y empezar a invertir con precisión?</h2>
+            <p style="max-width: 700px; margin: 0 auto 30px;">Su competencia ya está evolucionando. Hablemos de su estructura de costos y del potencial de crecimiento que le ofrece la automatización de alto nivel.</p>
+            <a href="#" class="btn btn-primary">Agendar Sesión Estratégica Gratuita</a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>Copyright © 2024 Red Sapien. Impulsando la precisión en seguros. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Efecto Máquina de Escribir (Velocidad ajustada)
+        document.addEventListener('DOMContentLoaded', () => {
+            const heroTitleElement = document.getElementById('hero-title-typing');
+            if (heroTitleElement) {
+                const originalText = "Transformamos su Gasto en Inversión Algorítmica de Alto Retorno.";
+                heroTitleElement.innerHTML = '';
+                
+                let i = 0;
+                function typeWriterEffect() {
+                    if (i < originalText.length) {
+                        heroTitleElement.innerHTML += originalText.charAt(i);
+                        i++;
+                        setTimeout(typeWriterEffect, 50);
+                    } else {
+                        // Agregar cursor parpadeante al finalizar
+                        const cursor = document.createElement('span');
+                        cursor.className = 'typing-cursor';
+                        heroTitleElement.appendChild(cursor);
+                    }
+                }
+                setTimeout(typeWriterEffect, 800);
+            }
+        });
+        
+        // Función para los efectos de aparición (Fade-in-Up)
+        function checkVisibility() {
+            const elements = document.querySelectorAll('.fade-in-up');
+            const windowHeight = window.innerHeight;
+            
+            elements.forEach(element => {
+                const rect = element.getBoundingClientRect();
+                const elementTop = rect.top;
+                
+                // Hace visible el elemento cuando está a 75% del borde inferior de la ventana
+                if (elementTop < windowHeight * 0.75) {
+                    element.classList.add('is-visible');
+                }
+            });
+        }
+
+        // Llamar la función al cargar y en el scroll
+        window.addEventListener('scroll', checkVisibility);
+        window.addEventListener('load', checkVisibility);
+        
+        checkVisibility(); 
+    </script>
+</body>
+</html>
